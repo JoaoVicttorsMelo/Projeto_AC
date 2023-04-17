@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleregistros.css') }}">
+
+
+    <meta charset="UTF-8">
+    <title>Cadastro de Hoteis</title>
+</head>
+<body>
+<div class="container">
+    <div class="title">Registrar Hotel</div>
+            <form action="{{ url_for('cadastro')}}" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Nome do Hotel</span>
+                        <input type="text" name="nome" placeholder="Nome do Hotel" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Estrelas para o hotel</span>
+                        <input type="text" name="estrela"  placeholder="Estrelas para o hotel" required oninput="validarEntrada(event)">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Preço da diaria</span>
+                        <input type="text" name="diaria" placeholder="Preço da diaria" required >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Cidade do Hotel</span>
+                        <input type="text" name="cidade" placeholder="Cidade do Hotel" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Endereço do Hotel</span>
+                        <input type="text" name="endereco" placeholder="Endereço do Hotel" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Numero do Hotel</span>
+                        <input type="text" name="numero" placeholder="Numero do Hotel" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">CNPJ</span>
+                        <input type="text" name="cnpj" id="cnpj" maxlength="18" placeholder="CNPJ do Hotel" required>
+                    </div>
+                </div>
+            <div class="button">
+                <input type="submit" value="Cadastrar">
+                <br>
+                </div>
+                <div class="button2">
+                <input type="submit" onclick="history.back()" value="Voltar">
+            </div>
+            </form>
+    <script>
+        function validarEntrada(event) {
+  const valor = event.target.value;
+  if (isNaN(valor) || valor < 1 || valor > 5) {
+    event.target.value = "";
+    alert("Por favor, insira um número entre 1 e 5.");
+  }
+}
+    </script>
+
+    <script>
+        const cnpjInput = document.getElementById('cnpj');
+
+cnpjInput.addEventListener('input', function(event) {
+  // remove tudo que não é dígito
+  const cnpj = event.target.value.replace(/\D/g, '');
+
+  // adiciona a máscara de CNPJ
+  if (cnpj.length > 0) {
+    cnpjInput.value = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
+  }
+});
+    </script>
+
+</div>
+</body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5eb22cc2a1bad90e54a2109a/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</html>

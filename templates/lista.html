@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylelista.css') }}">
+    <meta charset="UTF-8">
+    <title>Lista de Hoteis</title>
+</head>
+<body>
+<h1>Lista de Hoteis</h1>
+<hr>
+<table border="1">
+    <tr id="header">
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Estrela</th>
+        <th>Diaria</th>
+        <th>Cidade</th>
+        <th>Endereço</th>
+        <th>Numero</th>
+        <th>CNPJ</th>
+        <th>Excluir</th>
+        <th>Atualizar</th>
+    </tr>
+    {% for hoteis in hotel %}
+    <tr id="dados">
+        <td>{{ hoteis.hotel_id }}</td>
+        <td>{{ hoteis.nome }}</td>
+        <td>{{ hoteis.estrela }}</td>
+        <td>R${{ hoteis.diaria }}</td>
+        <td>{{ hoteis.cidade }}</td>
+        <td>{{ hoteis.endereco }}</td>
+        <td>{{ hoteis.numero }}</td>
+        <td>{{ hoteis.cnpj}}</td>
+        <td><a href="/excluir/{{ hoteis.hotel_id }}" id="excluir">X</a></td>
+        <td><a href="/atualizar/{{hoteis.hotel_id }}" id="atualizar">Atualizar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<button onclick="location.href = 'http://127.0.0.1:5000/';" class="button">Voltar</button>
+<script>
+  document.getElementById("excluir").addEventListener("click", function(event) {
+    event.preventDefault();
+    if (confirm("Deseja realmente excluir o dado")) {
+      window.location.href = this.href;
+    }
+  });
+</script>
+
+</body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5eb22cc2a1bad90e54a2109a/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</html>

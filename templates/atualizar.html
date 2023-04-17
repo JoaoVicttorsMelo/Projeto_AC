@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleregistros.css') }}">
+    <meta charset="UTF-8">
+    <title>Cadastro de Hoteis</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">Atualizar Dados</div>
+            <form action="" method="POST" id="formulario">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Nome do Hotel</span>
+                        <input type="text" name="nome" placeholder="Nome do Hotel" value="{{ hotel.nome}}">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Estrelas para o hotel</span>
+                        <input type="text" name="estrela" placeholder="Estrelas do Hotel" value="{{ hotel.estrela }}" oninput="validarEntrada(event)">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Preço da diaria</span>
+                        <input type="text" name="diaria" placeholder="Valor da Diaria" value="{{ hotel.diaria}}">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Cidade do Hotel</span>
+                        <input type="text" name="cidade" placeholder="Digite a cidade" value="{{ hotel.cidade}}">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Endereço do Hotel</span>
+                        <input type="text" name="endereco" placeholder="Digite o endereço do Hotel " value="{{ hotel.endereco }}">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Numero do Hotel</span>
+                        <input type="text" name="numero" placeholder="Digite o numero do endereço do Hotel" value="{{ hotel.numero }}">
+                    </div>
+                </div>
+            <div class="button">
+                <input type="submit" value="Alterar">
+            </div>
+                <div class="button2">
+                <input type="submit" onclick="location.href = 'http://127.0.0.1:5000/lista';" value="Voltar">
+            </div>
+            </form>
+    <script>
+  document.getElementById('formulario').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (confirm("Tem certeza de que deseja efetuar a alteração?")) {
+      this.submit();
+    }
+  });
+    </script>
+
+    <script>
+        function validarEntrada(event) {
+  const valor = event.target.value;
+  if (isNaN(valor) || valor < 1 || valor > 5) {
+    event.target.value = "";
+    alert("Por favor, insira um número entre 1 e 5.");
+  }
+}
+    </script>
+</div>
+</body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5eb22cc2a1bad90e54a2109a/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</html>
