@@ -18,6 +18,7 @@
         <th>Endereço</th>
         <th>Numero</th>
         <th>CNPJ</th>
+        <th>Telefone</th>
         <th>Excluir</th>
         <th>Atualizar</th>
     </tr>
@@ -26,11 +27,12 @@
         <td>{{ hoteis.hotel_id }}</td>
         <td>{{ hoteis.nome }}</td>
         <td>{{ hoteis.estrela }}</td>
-        <td>R${{ hoteis.diaria }}</td>
+        <td>{{ hoteis.diaria }}</td>
         <td>{{ hoteis.cidade }}</td>
         <td>{{ hoteis.endereco }}</td>
         <td>{{ hoteis.numero }}</td>
         <td>{{ hoteis.cnpj}}</td>
+        <td>{{ hoteis.telefone_contato}}</td>
         <td><a href="/excluir/{{ hoteis.hotel_id }}" id="excluir">X</a></td>
         <td><a href="/atualizar/{{hoteis.hotel_id }}" id="atualizar">Atualizar</a></td>
     </tr>

@@ -19,8 +19,9 @@ class HotelModel (banco.Model):
     endereco = banco.Column(banco.String(100), nullable=False)
     numero = banco.Column(banco.Integer, nullable=False)
     cnpj = banco.Column(banco.String(18), unique=True)
+    telefone_contato = banco.Column(banco.String(15), nullable=False)
 
-    def __init__(self, nome, estrela, diaria, cidade, endereco, numero, cnpj):
+    def __init__(self, nome, estrela, diaria, cidade, endereco, numero, cnpj, telefone_contato):
         self.nome = nome
         self.estrela = estrela
         self.diaria = diaria
@@ -28,7 +29,7 @@ class HotelModel (banco.Model):
         self.endereco = endereco
         self.numero = numero
         self.cnpj = cnpj
-
+        self.telefone_contato = telefone_contato
 @app.route("/")
 def init():
     return render_template("index.html")
@@ -38,6 +39,9 @@ def init():
 def index():
     return render_template("index.html")
 
+@app.route("/erro")
+def erro():
+    return render_template("erro.html")
 
 @app.route("/cadastrar")
 def cadastrar():
@@ -54,15 +58,16 @@ def cadastro():
         endereco = request.form.get("endereco")
         numero = request.form.get("numero")
         cnpj = request.form.get("cnpj")
+        telefone_contato = request.form.get("telefone_contato")
         try:
-            if nome and estrela and diaria and cidade and endereco and numero and cnpj:
-                hotel = HotelModel(nome, estrela, diaria, cidade, endereco, numero, cnpj)
+            if nome and estrela and diaria and cidade and endereco and numero and cnpj and telefone_contato:
+                hotel = HotelModel(nome, estrela, diaria, cidade, endereco, numero, cnpj, telefone_contato)
                 banco.session.add(hotel)
                 banco.session.commit()
             return redirect(url_for("index"))
         except IntegrityError:
             banco.session.rollback()
-            return render_template('cadastro.html', mensagem='o CNPJ já esta cadastrado')
+            return redirect(url_for("erro"))
 
 
 
@@ -97,14 +102,16 @@ def atualizar(id):
         cidade = request.form.get("cidade")
         endereco = request.form.get("endereco")
         numero = request.form.get("numero")
+        telefone_contato = request.form.get("telefone_contato")
 
-        if nome and estrela and diaria and cidade and endereco and numero:
+        if nome and estrela and diaria and cidade and endereco and numero and telefone_contato:
             hotel.nome = nome
             hotel.estrela = estrela
             hotel.diaria = diaria
             hotel.cidade = cidade
             hotel.endereco = endereco
             hotel.numero = numero
+            hotel.telefone_contato = telefone_contato
 
             banco.session.commit()
             return redirect(url_for("lista"))

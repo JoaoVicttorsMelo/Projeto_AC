@@ -35,6 +35,10 @@
                         <span class="details">Numero do Hotel</span>
                         <input type="text" name="numero" placeholder="Digite o numero do endereço do Hotel" value="{{ hotel.numero }}">
                     </div>
+                    <div class="input-box">
+                        <span class="details">Telefone</span>
+                        <input type="text" id="telefone" name="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" placeholder="(XX) XXXX-XXXX" required>
+                    </div>
                 </div>
             <div class="button">
                 <input type="submit" value="Alterar">
