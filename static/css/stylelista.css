@@ -11,7 +11,7 @@ table{
     top: 50%;
 	transform: translate(-50%, -50%);
 	border-collapse: collapse;
-	width: 1000px;
+	width: 1050px;
 	height: 100px;
 	border: 1px solid #bdc3c7;
 	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
