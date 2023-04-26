@@ -37,7 +37,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Telefone</span>
-                        <input type="text" id="telefone" name="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" placeholder="(XX) XXXX-XXXX" required>
+                        <input type="text"  name="telefone_contato" id="telefone" placeholder="(XX) XXXX-XXXX" required maxlength="14">
                     </div>
                 </div>
             <div class="button">
@@ -64,6 +64,17 @@
     alert("Por favor, insira um número entre 1 e 5.");
   }
 }
+    </script>
+
+     <script>  <!--Criando mascara para o telefone-->
+
+        const telefone = document.getElementById('telefone');
+telefone.addEventListener('input', function(evt) {
+  let valor = this.value.replace(/\D/g, '');
+  valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
+  valor = valor.replace(/(\d)(\d{4})$/, '$1-$2');
+  this.value = valor;
+});
     </script>
 </div>
 </body>
