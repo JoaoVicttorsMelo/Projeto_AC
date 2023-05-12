@@ -78,7 +78,6 @@ telefone.addEventListener('input', function(evt) {
     </script>
 </div>
 </body>
-Start of Tawk.to Script
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -90,4 +89,21 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+<script>
+let timeoutId;
+function resetTimer() {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(logout, 120000);
+}
+function logout() {
+  alert('Você foi desconectado por inatividade');
+  window.location.href = 'http://127.0.0.1:5000/index';
+}
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('mousedown', resetTimer);
+document.addEventListener('keypress', resetTimer);
+resetTimer();
+</script>
+
 </html>

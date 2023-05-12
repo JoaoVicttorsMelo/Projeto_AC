@@ -6,6 +6,8 @@
     <title>Cadastro de Hoteis</title>
 </head>
 <body>
+
+
 <div class="container">
     <div class="title">Registrar Hotel</div>
             <form action="{{ url_for('cadastro')}}" method="POST">
@@ -48,19 +50,9 @@
                 <br>
                 </div>
                 <div class="button2">
-                <input type="submit" onclick="history.back()" value="Voltar">
+                <input type="submit" onclick="location.href = 'http://127.0.0.1:5000/';" value="Voltar">
             </div>
             </form>
-
-    <script>
-function formatarValor() {
-  const valorInput = document.getElementById('diaria');
-  const valor = parseFloat(valorInput.value.replace(/[^\d.,]/g, '').replace(',', '.')); // Remove caracteres não numéricos e substitui vírgula por ponto
-  const formatoDinheiro = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-  valorInput.value = formatoDinheiro;
-}
-</script>
 
     <script>  <!--Criando mascara para estrelas-->
         function validarEntrada(event) {
@@ -110,4 +102,21 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+<script>
+let timeoutId;
+function resetTimer() {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(logout, 6000);
+}
+function logout() {
+  alert('Você foi desconectado por inatividade');
+  window.location.href = 'http://127.0.0.1:5000/index';
+}
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('mousedown', resetTimer);
+document.addEventListener('keypress', resetTimer);
+resetTimer();
+</script>
+
 </html>

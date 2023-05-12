@@ -53,6 +53,10 @@ tr#dados:hover{
 
 }
 .button{
+position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
 	height: 45px;
 	margin: 45px 0;
 }

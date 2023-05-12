@@ -126,3 +126,6 @@ def cria_banco():
 if __name__ == '__main__':
     banco.init_app(app)
     app.run(debug=True)
+
+# site para ver acessar o chat
+# https://dashboard.tawk.to/#/dashboard/5eb22cc2a1bad90e54a2109b

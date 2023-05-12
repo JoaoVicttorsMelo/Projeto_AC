@@ -8,7 +8,10 @@
 
 </head>
 <body>
-<h1>Gerenciamento de Hoteis</h1>
+
+<button id="change-background">Mudar fundo</button>
+
+<h1 class="cor">Gerenciamento de Hoteis</h1>
 <br>
 <br>
 <br>
@@ -17,7 +20,7 @@
 <a href="{{ url_for('lista')}}" class="listar" style="--clr:#1e9bff"><span>listagem de hoteis</span></a>
 </body>
 
-Start of Tawk.to Script
+
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -30,5 +33,21 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 
-End of Tawk.to Script
+<script>
+const button = document.getElementById('change-background');
+const body = document.body;
+const h1 = document.getElementsByTagName('h1')[0];
+
+button.addEventListener('click', () => {
+  if (body.classList.contains('black-background')) {
+    body.classList.remove('black-background');
+    body.classList.add('white-background');
+  } else {
+    body.classList.remove('white-background');
+    body.classList.add('black-background');
+  }
+  h1.classList.toggle('color-change');
+});
+
+</script>
 </html>

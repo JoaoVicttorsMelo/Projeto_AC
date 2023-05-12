@@ -31,13 +31,14 @@
         <td>{{ hoteis.cidade }}</td>
         <td>{{ hoteis.endereco }}</td>
         <td>{{ hoteis.numero }}</td>
-        <td>{{ hoteis.cnpj}}</td>
-        <td>{{ hoteis.telefone_contato}}</td>
+        <td>{{ hoteis.cnpj }}</td>
+        <td>{{ hoteis.telefone_contato }}</td>
         <td><a href="/excluir/{{ hoteis.hotel_id }}" id="excluir">X</a></td>
-        <td><a href="/atualizar/{{hoteis.hotel_id }}" id="atualizar">Atualizar</a></td>
+        <td><a href="/atualizar/{{ hoteis.hotel_id }}" id="atualizar">Atualizar</a></td>
     </tr>
     {% endfor %}
 </table>
+
 <button onclick="location.href = 'http://127.0.0.1:5000/';" class="button">Voltar</button>
 <script>
   document.getElementById("excluir").addEventListener("click", function(event) {
@@ -49,7 +50,6 @@
 </script>
 
 </body>
-Start of Tawk.to Script
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -61,4 +61,21 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+<script>
+let timeoutId;
+function resetTimer() {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(logout, 120000);
+}
+function logout() {
+  alert('Você foi desconectado por inatividade');
+  window.location.href = 'http://127.0.0.1:5000/index';
+}
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('mousedown', resetTimer);
+document.addEventListener('keypress', resetTimer);
+resetTimer();
+</script>
+
 </html>
