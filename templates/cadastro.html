@@ -2,6 +2,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styleregistros.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <meta charset="UTF-8">
     <title>Cadastro de Hoteis</title>
 </head>
@@ -22,7 +24,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Preço da diaria</span>
-                        <input type="text" name="diaria" id="diaria" placeholder="Preço da diaria" required oninput="formatarValor()">
+                        <input type="text" name="diaria" id="diaria" placeholder="Preço da diaria" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Cidade do Hotel</span>
@@ -30,15 +32,15 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Endereço do Hotel</span>
-                        <input type="text" name="endereco" placeholder="Endereço do Hotel" required>
+                        <input type="text" name="endereco" placeholder="Endereço do Hotel" required maxlength="100">
                     </div>
                     <div class="input-box">
                         <span class="details">Numero do Hotel</span>
-                        <input type="text" name="numero" placeholder="Numero do Hotel" required>
+                        <input type="number" name="numero" placeholder="Numero do Hotel" required oninput="limitarDigitos(this, 4)">
                     </div>
                     <div class="input-box">
                         <span class="details">CNPJ</span>
-                        <input type="text" name="cnpj" id="cnpj" maxlength="18" placeholder="CNPJ do Hotel" required>
+                        <input type="text" name="cnpj" id="cnpj" maxlength="18" placeholder="CNPJ do Hotel" required >
                     </div>
                     <div class="input-box">
                         <span class="details">Telefone</span>
@@ -62,6 +64,21 @@
     alert("Por favor, insira um número entre 1 e 5.");
   }
 }
+    </script>
+
+
+    <script> <!--Criando mascara para numero de hotel-->
+function limitarDigitos(input, maxDigits) {
+  if (input.value.length > maxDigits) {
+    input.value = input.value.slice(0, maxDigits);
+  }
+}
+</script>
+
+    <script>   <!--Criando mascara para diaria-->
+        $(document).ready(function() {
+            $('#diaria').mask('R$ 0.000.000,00', {reverse: true});
+        });
     </script>
 
     <script> <!--Criando mascara para o CNPJ-->

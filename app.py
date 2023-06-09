@@ -41,7 +41,8 @@ def index():
 
 @app.route("/erro")
 def erro():
-    return render_template("erro.html")
+    gif_url = url_for('static', filename='404.gif')
+    return render_template("erro.html", gif_url=gif_url)
 
 @app.route("/cadastrar")
 def cadastrar():

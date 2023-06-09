@@ -2,6 +2,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styleregistros.css') }}">
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <meta charset="UTF-8">
     <title>Cadastro de Hoteis</title>
 </head>
@@ -21,7 +24,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Preço da diaria</span>
-                        <input type="text" name="diaria" placeholder="Valor da Diaria" value="{{ hotel.diaria}}">
+                        <input ttype="text" name="diaria" id="diaria" placeholder="Valor da Diaria" value="{{ hotel.diaria}}">
                     </div>
                     <div class="input-box">
                         <span class="details">Cidade do Hotel</span>
@@ -33,11 +36,11 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Numero do Hotel</span>
-                        <input type="text" name="numero" placeholder="Digite o numero do endereço do Hotel" value="{{ hotel.numero }}">
+                        <input type="number" oninput="limitarDigitos(this, 4)" name="numero" placeholder="Digite o numero do endereço do Hotel" value="{{ hotel.numero }}">
                     </div>
                     <div class="input-box">
                         <span class="details">Telefone</span>
-                        <input type="text"  name="telefone_contato" id="telefone" placeholder="(XX) XXXX-XXXX" required maxlength="14">
+                        <input type="text"  name="telefone_contato" id="telefone" placeholder="(XX) XXXX-XXXX" required maxlength="14" value="{{ hotel.telefone_contato }}">
                     </div>
                 </div>
             <div class="button">
@@ -54,6 +57,21 @@
       this.submit();
     }
   });
+    </script>
+
+
+     <script> <!--Criando mascara para numero de hotel-->
+function limitarDigitos(input, maxDigits) {
+  if (input.value.length > maxDigits) {
+    input.value = input.value.slice(0, maxDigits);
+  }
+}
+</script>
+
+        <script>   <!--Criando mascara para diaria-->
+        $(document).ready(function() {
+            $('#diaria').mask('R$ 0.000.000,00', {reverse: true});
+        });
     </script>
 
     <script>
